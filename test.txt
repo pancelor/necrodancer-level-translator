@@ -1,36 +1,46 @@
-#settings
+[settings]
+save_location=C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\dungeons\
 name=TEST DUNGEON
-character=-1
+character=1
+player_glyph=p
+floor_glyph=-
+levels=level1.txt level2.txt
 
-#tiles
+[tiles]
+-=<tile cracked="0" torch="0" type="0" x="%d" y="%d" zone="0"></tile>
+s=<tile cracked="0" torch="0" type="2" x="%d" y="%d" zone="0"></tile>
++=<tile cracked="0" torch="0" type="100" x="%d" y="%d" zone="0"></tile>
+t=<tile cracked="0" torch="1" type="100" x="%d" y="%d" zone="0"></tile>
 
-#enemies
-
-
-#items
-
-
-#chests
-
-
-#crates
+[enemies]
 
 
-#shrines
+[items]
 
 
+[chests]
 
-#level
-xtxxxtxxxtx
-t----s----t
-x---------x
-x---------x
-x---------x
-t----p----t
-x---------x
-x---------x
-x---------x
-t---------t
-xtxxxtxxxtx
 
-#end
+[crates]
+
+
+[shrines]
+
+[database]
+stairs: <tile cracked="0" torch="0" type="2" x="%d" y="%d" zone="0"></tile>
+floor: <tile cracked="0" torch="0" type="0" x="%d" y="%d" zone="0"></tile>
+water: <tile cracked="0" torch="0" type="4" x="%d" y="%d" zone="0"></tile>
+tar: <tile cracked="0" torch="0" type="8" x="%d" y="%d" zone="0"></tile>
+hot_coals: <tile cracked="0" torch="0" type="10" x="%d" y="%d" zone="0"></tile>
+ice: <tile cracked="0" torch="0" type="11" x="%d" y="%d" zone="0"></tile>
+wood_door: <tile cracked="0" torch="0" type="103" x="%d" y="%d" zone="0"></tile>
+dirt_wall: <tile cracked="0" torch="0" type="100" x="%d" y="%d" zone="0"></tile>
+dirt_wall_torch: <tile cracked="0" torch="1" type="100" x="%d" y="%d" zone="0"></tile>
+stone_wall: <tile cracked="0" torch="0" type="107" x="%d" y="%d" zone="0"></tile>
+catacomb_wall: <tile cracked="0" torch="0" type="108" x="%d" y="%d" zone="0"></tile>
+spike_trap: <trap subtype="-1" type="2" x="%d" y="%d"></trap>
+bomb_trap: <trap subtype="-1" type="9" x="%d" y="%d"></trap>
+right_bounce: <trap subtype="0" type="1" x="%d" y="%d"></trap>
+left_bounce: <trap subtype="1" type="1" x="%d" y="%d"></trap>
+down_bounce: <trap subtype="2" type="1" x="%d" y="%d"></trap>
+up_bounce: <trap subtype="3" type="1" x="%d" y="%d"></trap>

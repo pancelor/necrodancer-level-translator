@@ -1,50 +1,52 @@
 #!/usr/bin/env python
 
-from string import Template
-from sys import argv, exit
+from sys import argv
 from pprint import pprint
 import re
-from collections import namedtuple
+from ConfigParser import RawConfigParser
 
 
 def post(postprocessor):
+    """ Modifies a function so that it's output is first passed through a postprocessor
+        e.g. this code snippet:
+            @post(list)
+            def gen_nums():
+                for i in range(1, 4):
+                    yield i
+            gen_nums()
+        gives this output:
+            [1, 2, 3]
+        (instead of some generator expression)
+        """
     def _decorator(fxn):
         def _fxn(*args, **kwargs):
             return postprocessor(fxn(*args, **kwargs))
         return _fxn
     return _decorator
 
-class Instream(object):
-    """An object that makes input easier"""
-    def __init__(self, fname):
-        super(Instream, self).__init__()
-        self.generator = self.create_generator(fname)
-        self.generator.next()
-
-    def read_lines(self, n):
-        return self.generator.send(n)
-
-    def create_generator(self, fname):
-        with open(fname, 'r') as file_:
-            lines = [(line.strip().split('#')[0]).strip() for line in file_.readlines()]
-        num = yield
-        while lines:
-            out, lines = lines[:num], lines[num:]
-            # pprint("out")
-            # pprint(out)
-            # pprint("lines")
-            # pprint(lines)
-            num = yield out
+def gen_file_lines(fname):
+    """ Reads in a file and returns it as a list of lines, with whitespace stripped off the ends of each line"""
+    with open(fname, 'r') as file_:
+         return [line.strip() for line in file_.readlines()]
 
 class Level(object):
     """Represents a single level in a dungeon"""
-    def __init__(self, lines):
+    def __init__(self, fname, player_glyph, floor_glyph):
         super(Level, self).__init__()
-        self.lines = lines
-        self.center = (0, 0)
-        self.center = self.find_player()
+        self.lines = gen_file_lines(fname)
+        self.center = self._find_player(player_glyph)
 
-    def find_glyph_coordinates(self, glyph):
+        # replace the player with a floor glyph
+        y = self.center[1]
+        self.lines[y] = self.lines[y].replace(player_glyph, floor_glyph)
+
+    def gen_all_chars(self):
+        for y, _line in enumerate(self.lines):
+            for x, char in enumerate(_line):
+                yield (x - self.center[0], y - self.center[1]), char
+
+    @post(list)
+    def _find_glyph_coordinates(self, glyph):
         """Returns a list of coordinates of all glyphs in lines that match the given glyph"""
         assert len(glyph) == 1
         for y, _line in enumerate(self.lines):
@@ -52,35 +54,18 @@ class Level(object):
                 if char == glyph:
                     yield x - self.center[0], y - self.center[1]
 
-    def find_player(self, PLAYER_GLYPH='p'): # TODO args
-        center = list(self.find_glyph_coordinates(PLAYER_GLYPH))
-        if len(center) != 1:
-            raise RuntimeError("There are too many (%d) player glyphs ('%s')"%(len(center), PLAYER_GLYPH))
-        return center[0]
-
-    # TODO move to dungeon
-    # def save(self):
-    #     with open("%s.xml"%self.name, 'w') as file_:
-    #         file_.writelines(lines)
-
-    def gen_all_chars(self):
-        for y, _line in enumerate(self.lines):
-            for x, char in enumerate(_line):
-                yield (x, y), char
+    def _find_player(self, player_glyph):
+        self.center = (0, 0)
+        player_locs = self._find_glyph_coordinates(player_glyph)
+        if len(player_locs) != 1:
+            raise RuntimeError("There are too many (%d) player glyphs ('%s')"%(len(player_locs), player_glyph))
+        return player_locs[0]
 
     def __str__(self):
         return '\n'.join(self.lines)
 
     def __repr__(self):
         return "Level [\n\t%s\n]"%str(self).replace('\n', '\n\t')
-
-def create_translator(glyphs, template_string):
-    template = Template(template_string)
-    @post(''.join)
-    def translator(lines, center):
-        for x, y in find_glyph_coordinates(lines, center, glyphs):
-            yield template.substitute(x=x, y=y)
-    return translator
 
 class Dungeon(object):
 
@@ -90,132 +75,83 @@ class Dungeon(object):
         "items",
         "chests",
         "crates",
-        "shrines"
+        "shrines",
     ]
 
     def __init__(self, fname):
         super(Dungeon, self).__init__()
-        self.name, self.character, self.rosetta, self.level = self.parse_input(fname)
-        self.level = Level(self.level.split('\n'))
-        pprint(self.name)
-        pprint(self.character)
-        pprint(self.rosetta)
-        pprint(self.level)
+        settings, self.rosetta = self._parse_input(fname)
 
-    def parse_input(self, fname):
-        with open(fname, 'r') as file_:
-            file_text = ''.join(file_.readlines())
-        flags = re.I | re.M | re.S
+        self.name = settings['name']
+        self.character = settings['character']
+        self.player_glyph = settings['player_glyph']
+        self.floor_glyph = settings['floor_glyph']
+        self.level_fnames = settings['levels'].split()
+        self.save_location = settings['save_location']
 
-        def extract_section(section_name):
-            sec = re.search(r'#%s\n+(?P<section>[^#]*?)\n+#'%(section_name), file_text, flags)
-            return sec.group("section") if sec else None
+    def save(self):
+        with open("%s%s.xml"%(self.save_location, self.name.upper()), 'w') as file_:
+            file_.writelines(self._gen_dungeon_xml())
 
-        settings = extract_section("settings")
-        match = re.match(r"^name\s*=\s*(?P<name>[^\n]+)\ncharacter\s*=\s*(?P<character>[^\n]+)$", settings, flags)
-        name = match.group("name")
-        character = match.group("character")
+    def _parse_input(self, fname):
+        parser = RawConfigParser()
+        parser.read(fname)
+        config = {
+            section: {key: val for key, val in parser.items(section)}
+            for section in parser.sections()
+        }
 
-        level = extract_section("level") # todo make multiple levels possible
+        # make sure the sections are exactly what we're expecting
+        expected_sections = set(['settings']+Dungeon.XML_TYPES)
+        sections = set(config.keys())
+        if sections != expected_sections:
+            raise RuntimeError("Config file is missing %s and should not include %s."%(str(expected_sections - sections), str(sections - expected_sections)))
 
-        rosetta = {}
+        settings = config['settings']
+        del config['settings']
+
+        return settings, config
+
+    @post(''.join)
+    def _gen_dungeon_xml(self):
+        yield r'<?xml?><dungeon character="%s" name="%s" numLevels="%d">'%(self.character, self.name, len(self.level_fnames))
+        for level_num, level_fname in enumerate(self.level_fnames):
+            yield '<level bossNum="-1" music="0" num="%d">'%(level_num+1)
+            yield self._gen_level_xml(level_fname)
+            yield '</level>'
+        yield '</dungeon>'
+
+    def _ensure_all_characters_are_recognized(self, chars, level_fname):
+        for char in chars:
+            found = False
+            for xtype in Dungeon.XML_TYPES:
+                if char in self.rosetta[xtype]:
+                    found = True
+            if not found:
+                raise RuntimeError("Unrecognized character '%s' in level '%s'."%(char, level_fname))
+
+    @post(''.join)
+    def _gen_level_xml(self, level_fname):
+        level = Level(level_fname, self.player_glyph, self.floor_glyph)
+        all_chars = level.gen_all_chars()
+        self._ensure_all_characters_are_recognized(
+            set(char for (x, y), char in all_chars),
+            level_fname
+        )
+
         for xtype in Dungeon.XML_TYPES:
-            sec = extract_section(xtype)
-            if sec is None:
-                raise RuntimeError("Level file is missing section '%s'."%xtype)
-            else:
-                rosetta[xtype] = sec
-        return name, character, rosetta, level
-
-    # def parse_input(self, fname):
-    #     XML_TYPES = [
-    #         "tiles",
-    #         "enemies",
-    #         "items",
-    #         "chests",
-    #         "crates",
-    #         "shrines"
-    #     ]
-
-    #     def create_pattern(names, sep):
-    #         x = r"^" + ''.join(r"%s%s\s*(?P<%s>.*?)\s*"%(name, sep, name) for name in names) + r"$"
-    #         print x
-    #         print
-    #         return x
-
-    #     with open(fname, 'r') as file_:
-    #         flags = re.I | re.M | re.S
-    #         sections = re.match(
-    #             create_pattern(["settings"] + XML_TYPES + ["level", "j"], ":"),
-    #             ''.join(file_.readlines()),
-    #             flags
-    #         ).groupdict()
-    #     sections = {k: v.strip() for k, v in sections.items()}
-
-    #     settings = re.match(
-    #         create_pattern(["name", "character"], "="),
-    #         sections["settings"],
-    #         flags
-    #     ).groupdict()
-
-    #     pprint (sections["level"])
-    #     return_dict = {"settings": settings, "level": sections["level"]}
-    #     for xml_tag in XML_TYPES:
-    #         if sections[xml_tag]:
-    #             return_dict[xml_tag] = {key: val for key, val in [line.split('=') for line in sections[xml_tag].split('\n')]}
-    #         else:
-    #             return_dict[xml_tag] = {}
-    #     return return_dict
-    #     # match=re.match(r"name")
-    #     # return sections
-
-    def generate_xml(self):
-        all_chars = self.level.gen_all_chars()
-        for xtype in Dungeon.XML_TYPES:
+            yield '<%s>'%xtype
             for (x, y), char in all_chars:
                 if char in self.rosetta[xtype]:
-                    pass
+                    yield self.rosetta[xtype][char]%(x, y)
+                elif xtype == 'tiles':
+                    yield self.rosetta[xtype][self.floor_glyph]%(x, y)
 
+            yield '</%s>'%xtype
 
-def main():
-    in_fname = argv[1]
-
-
-    Dungeon(in_fname)
-    # instream = Instream(in_fname)
-    # pprint (instream.read_lines(4))
-    exit()
-    center = find_player(lines)
-
-    translate_floors = create_translator('-mbscvpI*', r"""<tile cracked="0" torch="0" type="0" x="$x" y="$y" zone="0"></tile>""")
-    translate_walls = create_translator('x', r"""<tile cracked="0" torch="0" type="100" x="$x" y="$y" zone="0"></tile>""")
-    translate_torch_walls = create_translator('t', r"""<tile cracked="0" torch="1" type="100" x="$x" y="$y" zone="0"></tile>""")
-    translate_invisible_walls = create_translator('*', r"""<chest color="3" contents="ring_charisma" hidden="0" saleCost="0" singleChoice="0" x="$x" y="$y"></chest>""")
-    translate_shovemonsters = create_translator('s', r"""<enemy lord="0" type="212" x="$x" y="$y"></enemy>""")
-    translate_red_bats = create_translator('b', r"""<enemy lord="0" type="7" x="$x" y="$y"></enemy>""")
-    translate_obsidian_crossbows = create_translator('c', r"""<item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_crossbow" x="$x" y="$y"></item>""")
-    translate_spike_traps = create_translator('v', r"""<trap subtype="-1" type="2" x="$x" y="$y"></trap>""")
-
-    results = [
-            "<tiles>",
-            translate_floors(lines, center),
-            translate_walls(lines, center),
-            translate_torch_walls(lines, center),
-            "</tiles><traps>",
-            translate_spike_traps(lines, center),
-            "</traps><enemies>",
-            translate_shovemonsters(lines, center),
-            translate_red_bats(lines, center),
-            "</enemies><items>",
-            translate_obsidian_crossbows(lines, center),
-            "</items><chests>",
-            translate_invisible_walls(lines, center),
-            "</chests><shrines></shrines>"
-    ]
-
-    set_output(out_fname, results)
 
 if __name__ == '__main__':
-    main()
+    in_fname = argv[1]
 
-# tiles, traps, enemies, items, chests, crates, shrines
+    dungeon = Dungeon(in_fname)
+    dungeon.save()
