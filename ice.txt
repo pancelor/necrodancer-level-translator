@@ -1,0 +1,95 @@
+[settings]
+    save_location = C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\dungeons\
+    name = ICE EXAMPLE
+    player_glyph = p
+    floor_glyph = /
+    character = ${database:cadence}
+
+    levels = level1.txt level2.txt
+
+[tiles]
+    - = ${database:floor}
+    s = ${database:stairs}
+    + = ${database:catacomb_wall}
+    x = ${database:catacomb_wall_torch}
+    @ = ${database:hot_coals}
+    / = ${database:ice}
+    a = ${database:hot_coals}
+    A = ${database:ice}
+
+[enemies]
+
+[items]
+    a = ${database:winged_boots}
+    A = ${database:winged_boots}
+
+[chests]
+
+[crates]
+    c = ${database:crate}
+    b = ${database:barrel}
+
+[shrines]
+
+[database]
+    # characters
+    any_character = -1
+    cadence = 0
+    melody = 1
+    aria = 2
+    dorian = 3
+    eli = 4
+    monk = 5
+    dove = 6
+    coda = 7
+    bolt = 8
+    bard = 9
+
+    # tiles
+    stairs = <tile cracked="0" torch="0" type="2" x="{x}" y="{y}" zone="0"></tile>
+    floor = <tile cracked="0" torch="0" type="0" x="{x}" y="{y}" zone="0"></tile>
+    water = <tile cracked="0" torch="0" type="4" x="{x}" y="{y}" zone="0"></tile>
+    tar = <tile cracked="0" torch="0" type="8" x="{x}" y="{y}" zone="0"></tile>
+    hot_coals = <tile cracked="0" torch="0" type="10" x="{x}" y="{y}" zone="0"></tile>
+    ice = <tile cracked="0" torch="0" type="11" x="{x}" y="{y}" zone="0"></tile>
+    wood_door = <tile cracked="0" torch="0" type="103" x="{x}" y="{y}" zone="0"></tile>
+    dirt_wall = <tile cracked="0" torch="0" type="100" x="{x}" y="{y}" zone="0"></tile>
+    dirt_wall_torch = <tile cracked="0" torch="1" type="100" x="{x}" y="{y}" zone="0"></tile>
+    stone_wall = <tile cracked="0" torch="0" type="107" x="{x}" y="{y}" zone="0"></tile>
+    stone_wall_torch = <tile cracked="0" torch="1" type="107" x="{x}" y="{y}" zone="0"></tile>
+    catacomb_wall = <tile cracked="0" torch="0" type="108" x="{x}" y="{y}" zone="0"></tile>
+    catacomb_wall_torch = <tile cracked="0" torch="1" type="108" x="{x}" y="{y}" zone="0"></tile>
+    spike_trap = <trap subtype="-1" type="2" x="{x}" y="{y}"></trap>
+    bomb_trap = <trap subtype="-1" type="9" x="{x}" y="{y}"></trap>
+    right_bounce = <trap subtype="0" type="1" x="{x}" y="{y}"></trap>
+    left_bounce = <trap subtype="1" type="1" x="{x}" y="{y}"></trap>
+    down_bounce = <trap subtype="2" type="1" x="{x}" y="{y}"></trap>
+    up_bounce = <trap subtype="3" type="1" x="{x}" y="{y}"></trap>
+
+    # enemies
+    clone = <enemy beatDelay="1" lord="0" type="112" x="{x}" y="{y}"></enemy>
+    ghost = <enemy beatDelay="1" lord="0" type="11" x="{x}" y="{y}"></enemy>
+    explosive_mushroom = <enemy beatDelay="1" lord="0" type="118" x="{x}" y="{y}"></enemy>
+    white_skeleton = <enemy beatDelay="1" lord="0" type="3" x="{x}" y="{y}"></enemy>
+    green_skeleton = <enemy beatDelay="1" lord="0" type="4" x="{x}" y="{y}"></enemy>
+    black_skeleton = <enemy beatDelay="1" lord="0" type="5" x="{x}" y="{y}"></enemy>
+    white_skelemage = <enemy beatDelay="2" lord="0" type="103" x="{x}" y="{y}"></enemy>
+    green_skelemage = <enemy beatDelay="2" lord="0" type="104" x="{x}" y="{y}"></enemy>
+    black_skelemage = <enemy beatDelay="2" lord="0" type="105" x="{x}" y="{y}"></enemy>
+    green_slime = <enemy beatDelay="1" lord="0" type="0" x="{x}" y="{y}"></enemy>
+    blue_slime = <enemy beatDelay="1" lord="0" type="1" x="{x}" y="{y}"></enemy>
+    yellow_slime = <enemy beatDelay="1" lord="0" type="2" x="{x}" y="{y}"></enemy>
+    ice_slime = <enemy beatDelay="1" lord="0" type="201" x="{x}" y="{y}"></enemy>
+    fire_slime = <enemy beatDelay="1" lord="0" type="200" x="{x}" y="{y}"></enemy>
+    zombie = <enemy beatDelay="1" lord="0" type="12" x="{x}" y="{y}"></enemy>
+
+    # items
+    explorers_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_explorers" x="{x}" y="{y}"></item>
+    lead_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_lead" x="{x}" y="{y}"></item>
+    winged_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_winged" x="{x}" y="{y}"></item>
+    leaping_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_leaping" x="{x}" y="{y}"></item>
+    pain_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_pain" x="{x}" y="{y}"></item>
+
+    # crates
+    crate = <crate contents="no_item" type="0" x="{x}" y="{y}"></crate>
+    barrel = <crate contents="no_item" type="1" x="{x}" y="{y}"></crate>
