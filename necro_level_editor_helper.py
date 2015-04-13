@@ -6,7 +6,7 @@ import configparser
 import argparse
 
 # TODO ensure single-tile glyphs (?)
-
+# TODO fail gracefully when XML tags aren't closed
 
 def post(postprocessor):
     """ Modifies a function so that it's output is first passed through a postprocessor

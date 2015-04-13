@@ -1,4 +1,4 @@
-# necrodancer-level-translator
+# Crypt of the NecroDancer Unofficial Level Translator
 Who wants to manually delete the default level and then place hundreds of wall and floor tiles just to make the basic structure of a CotND level? Nobody? Weird.
 
 This is NOT supposed to be a full-fledged replacement level editor. Instead, this program translates levels from my own, custom format into the game's XML format. I think you'll find that my custom format is MUCH easier to work with, especially since you can use you favorite text editor to do it. (I recommend [Sublime Text 3](http://www.sublimetext.com/) for anyone who isn't already using anything that's more powerful, like emacs or vim)
@@ -40,7 +40,7 @@ The dungeon file is in this format, where `$` represents a placeholder that you 
     [database]
         $
 
-I can't think of a good way to clearly explain in words what each of these `$`'s need to be replaced by, so please look at the files in the `./example` directory to see how things work; it should be pretty self-explanatory.
+I can't think of a good way to clearly explain in words what each of these `$`'s need to be replaced by, so please look at the files in the `./example` directory to see how things work; it should be pretty self-explanatory. **You may have to change the `save_location` key in the `[settings]` sections**
 
 Run the example from the commandline as follows:
 
@@ -81,3 +81,11 @@ Sorry; I know it's a little awkward. As you build many dungeons over time, you s
         x = ${database:green_skeleton}
     [items]
         x = ${database:winged_boots}
+
+**Q:** I used this tool and generated an XML dungeon. When I tried to load it in-game, my game crashed. Help!
+
+**A:** That's not technically a question, but I'll humor you. One easy mistake to make is to forget to close the XML tags that you've defined in your `[database]` section. I'm working on a feature that will warn you about this.
+
+If that doesn't fix it, then I'm sorry. Please let me know so that I can fix any bugs that might be in my translator! You can create an issue here on github or you can email me at pancelor@gmail.com.
+
+### Happy level editing!
