@@ -90,12 +90,15 @@ class Dungeon(object):
         super(Dungeon, self).__init__()
         settings, self.config = self._parse_input(fname)
 
-        self.name = settings['name']
-        self.character = settings['character']
-        self.player_glyph = settings['player_glyph']
-        self.floor_glyph = settings['floor_glyph']
-        self.level_fnames = settings['levels'].split()
-        self.save_location = settings['save_location']
+        try:
+            self.name = settings['name']
+            self.character = settings['character']
+            self.player_glyph = settings['player_glyph']
+            self.floor_glyph = settings['floor_glyph']
+            self.level_fnames = settings['levels'].split()
+            self.save_location = settings['save_location']
+        except KeyError as e:
+            error("%s is not defined in the [settings] section of this file."%(str(e)))
 
         if self.floor_glyph not in self.config["tiles"]:
             error("Floor glyph ('%s') is not listed under the [tiles] section"%self.floor_glyph)

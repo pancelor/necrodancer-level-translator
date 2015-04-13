@@ -1,7 +1,53 @@
 # necrodancer-level-translator
 Who wants to manually delete the default level and then place hundreds of wall and floor tiles just to make the basic structure of a CotND level? Nobody? Weird.
 
-This is NOT supposed to be a full-fledged replacement editor. I imagine it will be mostly used to create the basic structure of levels, after which you'll go into the in-game editor to make adjustments. It's not particularly user friendly; I made it for myself because the in-game editor can be quite clunky.
+This is NOT supposed to be a full-fledged replacement level editor. Instead, this program translates levels from my own, custom format into the game's XML format. I think you'll find that my custom format is MUCH easier to work with, especially since you can use you favorite text editor to do it. (I recommend [Sublime Text 3](http://www.sublimetext.com/) for anyone who isn't already using anything that's more powerful, like emacs or vim)
+
+I imagine this translator will mostly be used to create the basic structure of levels, after which you'll go into the in-game editor to make adjustments. But you certainly can develop entire dungeons using this program if you find it useful.
+
+## How to use:
+
+You need a dungeon file and one or more level files. (These can all be text files)
+
+The dungeon file is in this format, where `$` represents a placeholder that you need to fill in:
+
+    [settings]
+        save_location = $
+        name = $
+        player_glyph = $
+        floor_glyph = $
+        character = $
+        levels = $
+
+    [tiles]
+        $
+
+    [enemies]
+        $
+
+    [items]
+        $
+
+    [chests]
+        $
+
+    [crates]
+        $
+
+    [shrines]
+        $
+
+    [database]
+        $
+
+I can't think of a good way to clearyl explain in words what each of these `$`'s need to be replaced by, so please look at the files in the ./example directory to see how things work; it should be pretty self-exmplanatory.
+
+Run the example from the commandline as follows:
+
+    $ cd example
+    $ python3 ../necro_level_editor_helper.py dungeon.txt
+
+(You must be in the folder that has your dungeon and level files in it when you run the translator)
 
 ## faq:
 
@@ -27,11 +73,3 @@ Then, in your actual level file, type a `g` whereever you want to place a green 
         x = ${database:ice}
     [enemies]
         x = ${database:green_skeleton}
-
-
-Run it from the commandline as follows:
-
-    $ cd example
-    $ python3 ../necro_level_editor_helper.py ice.txt
-
-(You must be in the folder that has your dungeon and level files in it when you run the translator)
