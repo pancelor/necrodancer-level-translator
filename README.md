@@ -40,7 +40,7 @@ The dungeon file is in this format, where `$` represents a placeholder that you 
     [database]
         $
 
-I can't think of a good way to clearyl explain in words what each of these `$`'s need to be replaced by, so please look at the files in the ./example directory to see how things work; it should be pretty self-exmplanatory.
+I can't think of a good way to clearly explain in words what each of these `$`'s need to be replaced by, so please look at the files in the `./example` directory to see how things work; it should be pretty self-explanatory.
 
 Run the example from the commandline as follows:
 
@@ -57,19 +57,27 @@ Run the example from the commandline as follows:
 
     green_skeleton = <enemy beatDelay="1" lord="0" type="4" x="{x}" y="{y}"></enemy>
 
-Basically, you say 'name = xml', where name is a user-friendly name and xml is the xml that corresponds to it. **Make sure you include the closing XML tag!!** (in this case, `</enemy>`) The xml should also have two position placeholders: `x="{x}" y="{y}"`.
+Basically, you say `name = xml`, where `name` is a user-friendly name and `xml` is the XML that corresponds to it. **Make sure you include the closing XML tag!!** (in this case, `</enemy>`) The xml should also have two position placeholders: `x="{x}" y="{y}"`.
 
-Then, up under the `[enemies]` heading, to define a glyph that corresponds to a green skeleton, make a new line like this:
+To define a glyph that corresponds to a green skeleton, add a new line under the `[enemies]` section, like this:
 
     g = ${database:green_skeleton}
 
-Then, in your actual level file, type a `g` whereever you want to place a green skeleton
+Then, in your actual level file, type a `g` wherever you want to place a green skeleton
+
+**Q:** How do I find the XML that corresponds to the various enemies/items/etc in the game?
+
+**A:** You have to make a level using the in-game editor, place the type of object you want, save the level, and then examine the game's saved data, which should be located at `C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\dungeons\MY DUNGEON.xml` (for windows users)
+
+Sorry; I know it's a little awkward. As you build many dungeons over time, you should keep your old `[database]` settings, gradually adding new objects to your database as you need them. The example dungeon in `./example/dungeon.txt` has a very basic database already; I may expand this over time if I get around to it. (Pull requests are welcome!)
 
 **Q:** Can I place multiple things in a single space?
 
-**A:** Yes! You can place multiple thing *of different types* in one space. For example, you can place an enemy, an item, and a floor tile all in a single space, but you can't place multiple enemies or multiple items. You do this by defining a glyph in multiple different sections. For example, assuming you have the xml for `green_skeleton` and `ice` in your `[database]` section, you can create a glyph `x` that will be converted into a green skeleton standing on ice with the following:
+**A:** Yes! You can place multiple things *of different types* in one space. For example, you can place an enemy, an item, and a floor tile all in a single space, but you can't place multiple enemies or multiple items on a single space. You do this by defining a glyph in multiple different sections. For example, assuming you have the XML for `green_skeleton`, `ice`, and `winged_boots` in your `[database]` section, you can create a glyph `x` that will be converted into a green skeleton that is standing on ice and winged boots with the following:
 
     [tiles]
         x = ${database:ice}
     [enemies]
         x = ${database:green_skeleton}
+    [items]
+        x = ${database:winged_boots}
