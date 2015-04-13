@@ -5,6 +5,8 @@ from pprint import pprint
 import configparser
 import argparse
 
+# TODO ensure single-tile glyphs (?)
+
 
 def post(postprocessor):
     """ Modifies a function so that it's output is first passed through a postprocessor
@@ -124,10 +126,13 @@ class Dungeon(object):
         expected_sections = set(['settings', 'database']+Dungeon.XML_TYPES)
         sections = set(config.keys())
         if sections != expected_sections:
-            error("Config file is missing %s and should not include %s."%(
-                        str(expected_sections - sections),
-                        str(sections - expected_sections)
-                 ))
+            missing = set(expected_sections - sections)
+            extra = set(sections - expected_sections)
+            msg = "Config file is missing %s."%(str(missing)) if len(missing) else ''
+            msg += "\n\tConfig file should not include %s."%(str(extra)) if len(extra) else ''
+            if sections == set():
+                msg += '\n\t Make sure the input file is located where you think it is!'
+            error(msg)
 
         settings = config['settings']
         del config['settings']

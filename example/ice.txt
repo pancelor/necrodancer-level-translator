@@ -14,12 +14,15 @@
     x = ${database:catacomb_wall_torch}
     @ = ${database:hot_coals}
     / = ${database:ice}
+
+    # demonstration of placing an item on two different floor tiles:
     a = ${database:hot_coals}
     A = ${database:ice}
 
 [enemies]
 
 [items]
+    # demonstration of placing an item on two different floor tiles:
     a = ${database:winged_boots}
     A = ${database:winged_boots}
 
