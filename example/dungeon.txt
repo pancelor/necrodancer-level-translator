@@ -1,3 +1,6 @@
+# This is a comment
+; This is also a comment
+
 [settings]
     save_location = C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\dungeons\
     name = ICE EXAMPLE
@@ -18,6 +21,8 @@
     # demonstration of placing an item on two different floor tiles:
     a = ${database:hot_coals}
     A = ${database:ice}
+
+    # Keep in mind that you can't define '#' or ';' as glyphs, since they're used for comments
 
 [enemies]
 
