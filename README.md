@@ -89,3 +89,20 @@ Sorry; I know it's a little awkward. As you build many dungeons over time, you s
 If that doesn't fix it, then I'm sorry. Please let me know so that I can fix any bugs that might be in my translator! You can create an issue here on github or you can email me at pancelor@gmail.com.
 
 ### Happy level editing!
+
+To make your mouth water a little, the following is the exact text of `example/level1.txt`:
+
+    +x+++x+++x+
+    x++//////+x
+    ++/////c//+
+    +/////////+
+    +///p////++
+    x///////++x
+    +/+/////+/+
+    +////+//+/+
+    +/////c//s+
+    +/+/////+/+
+    x///+///+/x
+    +x+++x+++x+
+
+Building that text file in a moderately powerful text editor is *much* easier than using the in-game level editor.
