@@ -5,7 +5,10 @@
     save_location = C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\dungeons\
     name = ICE EXAMPLE
     player_glyph = p
+
+    # 'floor_glyph' specifies what the default floor glyph is; i.e. what floor tile to place under any items/enemies/etc that don't have some other floor tile speicified
     floor_glyph = /
+
     character = ${database:cadence}
 
     levels = level1.txt level2.txt
