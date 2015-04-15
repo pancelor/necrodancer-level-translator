@@ -105,7 +105,7 @@ Yes! You can place multiple things *of different types* in one space. For exampl
 
 That's not technically a question, but I'll humor you. One easy mistake to make is to forget to close the XML tags that you've defined in your `[database]` section. I'm working on a feature that will warn you about this.
 
-If that doesn't fix it, then I'm sorry. Please let me know so that I can fix any bugs that might be in my translator! You can create an issue here on github or you can email me at pancelor@gmail.com.
+If that doesn't fix it, then I'm sorry. Please let me know so that I can fix any bugs that exist! You can create an issue here on github, email me (pancelor at gmail dot com), or tweet at me (@pancelor).
 
 ### Why is this so complicated? Why do I have to mess around with XML? Couldn't you have just have hard-coded certain glyphs to mean certain things?
 
