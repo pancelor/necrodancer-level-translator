@@ -16,7 +16,7 @@ Instead, fire up your favorite text editor and design levels like this:
     x///+///+/x
     +x+++x+++x+
 
-(this is the exact text of example/level1.txt)
+(this is the exact text of `example/level1.txt`)
 
 This tool is NOT supposed to be a full-fledged replacement level editor. Instead, this program translates dungeons from my own, custom format into the game's XML format. I think you'll find that my custom format is much easier to work with, especially since you can use you favorite text editor to do it. (I recommend [Sublime Text 3](http://www.sublimetext.com/) for anyone who isn't already using anything that's more powerful, like emacs or vim. Being able to use multiple cursors is pretty great)
 
