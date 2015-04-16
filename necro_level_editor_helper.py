@@ -4,6 +4,7 @@ from sys import exit
 from pprint import pprint
 import configparser
 import argparse
+import os
 
 
 def post(postprocessor):
@@ -85,9 +86,10 @@ class Dungeon(object):
         "shrines",
     ]
 
-    def __init__(self, fname):
+    def __init__(self, dungeon_directory, dungeon_fname):
         super(Dungeon, self).__init__()
-        settings, self.config = self._parse_input(fname)
+        self.directory = dungeon_directory
+        settings, self.config = self._parse_input(os.path.join(dungeon_directory, dungeon_fname))
 
         try:
             self.name = settings['name']
@@ -177,7 +179,7 @@ class Dungeon(object):
         if VERBOSE:
             print("Generating level: %s"%(level_fname))
 
-        level = Level(level_fname, self.player_glyph, self.floor_glyph)
+        level = Level(os.path.join(self.directory, level_fname), self.player_glyph, self.floor_glyph)
         all_chars = level.all_glyphs()
         self._ensure_all_characters_are_recognized(
             set(char for (x, y), char in all_chars),
@@ -199,6 +201,11 @@ class Dungeon(object):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate a necrodancer dungeon from text files.')
     parser.add_argument(
+        'dungeon_directory',
+        action='store',
+        help='The relative path to the directory where your dungeon and levels files are stored'
+    )
+    parser.add_argument(
         'in_file',
         action='store',
         help='The formatted .txt file to generate _ensure_all_characters_are_recognized .xml dungeon from'
@@ -211,5 +218,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     VERBOSE = args.verbose
 
-    dungeon = Dungeon(args.in_file)
+    dungeon = Dungeon(args.dungeon_directory, args.in_file)
     dungeon.save()

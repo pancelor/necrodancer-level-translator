@@ -66,10 +66,9 @@ Look at the files in the `./example` directory; hopefully seeing an example dung
 
 Run the example from the commandline as follows:
 
-    $ cd example
-    $ python3 ../necro_level_editor_helper.py dungeon.txt
+    $ python3 necro_level_editor_helper.py example dungeon.txt
 
-In general, you must be in the folder that has your dungeon and level files in it when you run the translator.
+The two arguments to the translator are 1) the directory where your dungeon and level files are saved, and 2) the name of your dungeon file.
 
 ## faq:
 
