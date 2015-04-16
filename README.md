@@ -42,6 +42,9 @@ The dungeon file is in this format, where each `%(...)` represents a placeholder
     [enemies]
         % (a list of definitions of enemy glyphs)
 
+    [traps]
+        % (a list of definitions of trap glyphs)
+
     [items]
         % (a list of definitions of item glyphs)
 
@@ -57,10 +60,10 @@ The dungeon file is in this format, where each `%(...)` represents a placeholder
     [database]
         % (a lookup table of XML snippets; the other glyph definitions should all reference this section)
 
-Each of the level files is a text file containing glyphs, laid out graphically. 
+Each of the level files is a text file containing glyphs, laid out graphically.
 
 Look at the files in the `./example` directory; hopefully seeing an example dungeon should make the dungeon format more clear.
-    
+
 Run the example from the commandline as follows:
 
     $ cd example
@@ -115,7 +118,7 @@ There are a couple of reasons:
 
 * This format was one of the simplest ways I could think of to get the most immediate benefit. There are certainly more user-friendly programs that I could have made, but this one was one of the simplest ones to program, which means it's less likely to have bugs.
 
-Even though this format might look a little overwhelming at first, it's not bad once you get used to it. The `[database]` section is designed to let you define XML snippets, so that you can define glyphs in the other sections with sane, readable names. Every time you create a new dungeon with this tool, you can copy over your old `[database]` section, so you won't have to muck around with XML too much. 
+Even though this format might look a little overwhelming at first, it's not bad once you get used to it. The `[database]` section is designed to let you define XML snippets, so that you can define glyphs in the other sections with sane, readable names. Every time you create a new dungeon with this tool, you can copy over your old `[database]` section, so you won't have to muck around with XML too much.
 
 ### Happy level editing!
 

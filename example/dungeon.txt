@@ -27,6 +27,8 @@
 
     # Keep in mind that you can't define '#' or ';' as glyphs, since they're used for comments
 
+[traps]
+
 [enemies]
 
 [items]
@@ -56,20 +58,34 @@
     bolt = 8
     bard = 9
 
-    # tiles
+    # floor_tiles
     stairs = <tile cracked="0" torch="0" type="2" x="{x}" y="{y}" zone="0"></tile>
     floor = <tile cracked="0" torch="0" type="0" x="{x}" y="{y}" zone="0"></tile>
     water = <tile cracked="0" torch="0" type="4" x="{x}" y="{y}" zone="0"></tile>
     tar = <tile cracked="0" torch="0" type="8" x="{x}" y="{y}" zone="0"></tile>
     hot_coals = <tile cracked="0" torch="0" type="10" x="{x}" y="{y}" zone="0"></tile>
     ice = <tile cracked="0" torch="0" type="11" x="{x}" y="{y}" zone="0"></tile>
-    wood_door = <tile cracked="0" torch="0" type="103" x="{x}" y="{y}" zone="0"></tile>
+    shop_floor = <tile cracked="0" torch="0" type="3" x="{x}" y="{y}" zone="0"></tile>
+
+    # wall_tiles
     dirt_wall = <tile cracked="0" torch="0" type="100" x="{x}" y="{y}" zone="0"></tile>
     dirt_wall_torch = <tile cracked="0" torch="1" type="100" x="{x}" y="{y}" zone="0"></tile>
+    dirt_wall_cracked = <tile cracked="1" torch="0" type="100" x="{x}" y="{y}" zone="0"></tile>
+    dirt_wall_cracked_torch = <tile cracked="1" torch="1" type="100" x="{x}" y="{y}" zone="0"></tile>
     stone_wall = <tile cracked="0" torch="0" type="107" x="{x}" y="{y}" zone="0"></tile>
     stone_wall_torch = <tile cracked="0" torch="1" type="107" x="{x}" y="{y}" zone="0"></tile>
+    stone_wall_cracked = <tile cracked="1" torch="0" type="107" x="{x}" y="{y}" zone="0"></tile>
+    stone_wall_cracked_torch = <tile cracked="1" torch="1" type="107" x="{x}" y="{y}" zone="0"></tile>
     catacomb_wall = <tile cracked="0" torch="0" type="108" x="{x}" y="{y}" zone="0"></tile>
     catacomb_wall_torch = <tile cracked="0" torch="1" type="108" x="{x}" y="{y}" zone="0"></tile>
+    catacomb_wall_cracked = <tile cracked="1" torch="0" type="108" x="{x}" y="{y}" zone="0"></tile>
+    catacomb_wall_cracked_torch = <tile cracked="1" torch="1" type="108" x="{x}" y="{y}" zone="0"></tile>
+    unbreakable_wall = <tile cracked="0" torch="1" type="105" x="{x}" y="{y}" zone="0"></tile>
+    wood_door = <tile cracked="0" torch="0" type="103" x="{x}" y="{y}" zone="0"></tile>
+    metal_door = <tile cracked="0" torch="0" type="111" x="{x}" y="{y}" zone="0"></tile>
+    locked_door = <tile cracked="0" torch="0" type="106" x="{x}" y="{y}" zone="0"></tile>
+
+    # traps
     spike_trap = <trap subtype="-1" type="2" x="{x}" y="{y}"></trap>
     bomb_trap = <trap subtype="-1" type="9" x="{x}" y="{y}"></trap>
     right_bounce = <trap subtype="0" type="1" x="{x}" y="{y}"></trap>
@@ -94,13 +110,195 @@
     fire_slime = <enemy beatDelay="1" lord="0" type="200" x="{x}" y="{y}"></enemy>
     zombie = <enemy beatDelay="1" lord="0" type="12" x="{x}" y="{y}"></enemy>
 
-    # items
-    explorers_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_explorers" x="{x}" y="{y}"></item>
-    lead_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_lead" x="{x}" y="{y}"></item>
+    # weapons
+    base_dagger = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_dagger" x="{x}" y="{y}"></item>
+    titanium_dagger = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_dagger" x="{x}" y="{y}"></item>
+    obsidian_dagger = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_dagger" x="{x}" y="{y}"></item>
+    glass_dagger = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_dagger" x="{x}" y="{y}"></item>
+    dagger_frost = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_dagger_frost" x="{x}" y="{y}"></item>
+    dagger_phasing = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_dagger_phasing" x="{x}" y="{y}"></item>
+    base_broadsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_broadsword" x="{x}" y="{y}"></item>
+    titanium_broadsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_broadsword" x="{x}" y="{y}"></item>
+    obsidian_broadsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_broadsword" x="{x}" y="{y}"></item>
+    glass_broadsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_broadsword" x="{x}" y="{y}"></item>
+    base_longsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_longsword" x="{x}" y="{y}"></item>
+    titanium_longsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_longsword" x="{x}" y="{y}"></item>
+    obsidian_longsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_longsword" x="{x}" y="{y}"></item>
+    glass_longsword = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_longsword" x="{x}" y="{y}"></item>
+    base_whip = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_whip" x="{x}" y="{y}"></item>
+    titanium_whip = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_whip" x="{x}" y="{y}"></item>
+    obsidian_whip = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_whip" x="{x}" y="{y}"></item>
+    glass_whip = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_whip" x="{x}" y="{y}"></item>
+    base_spear = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_spear" x="{x}" y="{y}"></item>
+    titanium_spear = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_spear" x="{x}" y="{y}"></item>
+    obsidian_spear = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_spear" x="{x}" y="{y}"></item>
+    glass_spear = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_spear" x="{x}" y="{y}"></item>
+    base_rapier = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_rapier" x="{x}" y="{y}"></item>
+    titanium_rapier = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_rapier" x="{x}" y="{y}"></item>
+    obsidian_rapier = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_rapier" x="{x}" y="{y}"></item>
+    glass_rapier = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_rapier" x="{x}" y="{y}"></item>
+    base_bow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_bow" x="{x}" y="{y}"></item>
+    titanium_bow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_bow" x="{x}" y="{y}"></item>
+    obsidian_bow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_bow" x="{x}" y="{y}"></item>
+    glass_bow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_bow" x="{x}" y="{y}"></item>
+    base_crossbow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_crossbow" x="{x}" y="{y}"></item>
+    titanium_crossbow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_crossbow" x="{x}" y="{y}"></item>
+    obsidian_crossbow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_crossbow" x="{x}" y="{y}"></item>
+    glass_crossbow = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_crossbow" x="{x}" y="{y}"></item>
+    base_flail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_flail" x="{x}" y="{y}"></item>
+    titanium_flail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_flail" x="{x}" y="{y}"></item>
+    obsidian_flail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_flail" x="{x}" y="{y}"></item>
+    glass_flail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_flail" x="{x}" y="{y}"></item>
+    base_cat = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_cat" x="{x}" y="{y}"></item>
+    titanium_cat = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_titanium_cat" x="{x}" y="{y}"></item>
+    obsidian_cat = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_obsidian_cat" x="{x}" y="{y}"></item>
+    glass_cat = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_glass_cat" x="{x}" y="{y}"></item>
+    blunderbuss = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_blunderbuss" x="{x}" y="{y}"></item>
+    rifle = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_rifle" x="{x}" y="{y}"></item>
+
+    # shovels
+    base_shovel = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="shovel_basic" x="{x}" y="{y}"></item>
+    titanium_shovel = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="shovel_titanium" x="{x}" y="{y}"></item>
+    obsidian_shovel = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="shovel_obsidian" x="{x}" y="{y}"></item>
+    glass_shovel = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="shovel_glass" x="{x}" y="{y}"></item>
+    crystal_shovel = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="shovel_crystal" x="{x}" y="{y}"></item>
+    pickaxe = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="pickaxe" x="{x}" y="{y}"></item>
+
+    # torches
+    base_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_1" x="{x}" y="{y}"></item>
+    bright_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_2" x="{x}" y="{y}"></item>
+    luminous_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_3" x="{x}" y="{y}"></item>
+    obsidian_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_obsidian" x="{x}" y="{y}"></item>
+    glass_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_glass" x="{x}" y="{y}"></item>
+    infernal_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_infernal" x="{x}" y="{y}"></item>
+    torch_foresight = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_foresight" x="{x}" y="{y}"></item>
+
+    # boots
+    speed_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_speed" x="{x}" y="{y}"></item>
     winged_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_winged" x="{x}" y="{y}"></item>
     leaping_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_leaping" x="{x}" y="{y}"></item>
+    ballet_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_ballet_shoes" x="{x}" y="{y}"></item>
+    explorers_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_explorers" x="{x}" y="{y}"></item>
+    lead_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_lead" x="{x}" y="{y}"></item>
+    lunging_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_lunging" x="{x}" y="{y}"></item>
     pain_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_pain" x="{x}" y="{y}"></item>
+    strength_boots = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_boots_strength" x="{x}" y="{y}"></item>
+    hargreaves = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="feet_greaves" x="{x}" y="{y}"></item>
+
+    # armor
+    leather_armor = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_leather" x="{x}" y="{y}"></item>
+    chainmail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_chainmail" x="{x}" y="{y}"></item>
+    obsidian_armor = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_obsidian" x="{x}" y="{y}"></item>
+    platemail = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_platemail" x="{x}" y="{y}"></item>
+    heavyplate = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_heavyplate" x="{x}" y="{y}"></item>
+    glass_armor = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_glass" x="{x}" y="{y}"></item>
+    gi = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="armor_gi" x="{x}" y="{y}"></item>
+
+    # headgear
+    thorns_crown = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_crown_of_thorns" x="{x}" y="{y}"></item>
+    greed_crown = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_crown_of_greed" x="{x}" y="{y}"></item>
+    teleportation_crown = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_crown_of_teleportation" x="{x}" y="{y}"></item>
+    circlet_of_telepathy = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_circlet_telepathy" x="{x}" y="{y}"></item>
+    miners_cap = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_miners_cap" x="{x}" y="{y}"></item>
+    monocle = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_monocle" x="{x}" y="{y}"></item>
+    helm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_helm" x="{x}" y="{y}"></item>
+    glass_jaw = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_glass_jaw" x="{x}" y="{y}"></item>
+    blast_helm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_blast_helm" x="{x}" y="{y}"></item>
+    sunglasses = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="head_sunglasses" x="{x}" y="{y}"></item>
+
+    # rings
+    courage_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_courage" x="{x}" y="{y}"></item>
+    war_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_war" x="{x}" y="{y}"></item>
+    peace_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_peace" x="{x}" y="{y}"></item>
+    mana_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_mana" x="{x}" y="{y}"></item>
+    might_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_might" x="{x}" y="{y}"></item>
+    shadows_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_shadows" x="{x}" y="{y}"></item>
+    charisma_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_charisma" x="{x}" y="{y}"></item>
+    luck_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_luck" x="{x}" y="{y}"></item>
+    gold_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_gold" x="{x}" y="{y}"></item>
+    regeneration_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_regeneration" x="{x}" y="{y}"></item>
+    protection_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_protection" x="{x}" y="{y}"></item>
+    becoming_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_becoming" x="{x}" y="{y}"></item>
+    phasing_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_phasing" x="{x}" y="{y}"></item>
+    shielding_ring = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="ring_shielding" x="{x}" y="{y}"></item>
+
+    # spells
+    heal_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_heal" x="{x}" y="{y}"></item>
+    bomb_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_bomb" x="{x}" y="{y}"></item>
+    shield_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_shield" x="{x}" y="{y}"></item>
+    transmute_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_transmute" x="{x}" y="{y}"></item>
+    fireball_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_fireball" x="{x}" y="{y}"></item>
+    freeze_spell = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="spell_freeze_enemies" x="{x}" y="{y}"></item>
+
+    # scrolls
+    earthquake_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_earthquake" x="{x}" y="{y}"></item>
+    fear_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_fear" x="{x}" y="{y}"></item>
+    fireball_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_fireball" x="{x}" y="{y}"></item>
+    freeze_enemies_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_freeze_enemies" x="{x}" y="{y}"></item>
+    gigantism_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_gigantism" x="{x}" y="{y}"></item>
+    riches_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_riches" x="{x}" y="{y}"></item>
+    shield_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_shield" x="{x}" y="{y}"></item>
+    enchant_weapon_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_enchant_weapon" x="{x}" y="{y}"></item>
+    need_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_need" x="{x}" y="{y}"></item>
+    transmute_scroll = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="scroll_transmute" x="{x}" y="{y}"></item>
+
+    # charms
+    frost_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_frost" x="{x}" y="{y}"></item>
+    gluttony_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_gluttony" x="{x}" y="{y}"></item>
+    luck_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_luck" x="{x}" y="{y}"></item>
+    nazar_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_nazar" x="{x}" y="{y}"></item>
+    protection_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_protection" x="{x}" y="{y}"></item>
+    risk_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_risk" x="{x}" y="{y}"></item>
+    strength_charm = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="charm_strength" x="{x}" y="{y}"></item>
+
+    # other items
+    apple = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="food_1" x="{x}" y="{y}"></item>
+    cheese = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="food_2" x="{x}" y="{y}"></item>
+    chicken = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="food_3" x="{x}" y="{y}"></item>
+    ham = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="food_4" x="{x}" y="{y}"></item>
+    backpack = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="hud_backpack" x="{x}" y="{y}"></item>
+    bag_holding = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="bag_holding" x="{x}" y="{y}"></item>
+    holster = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="holster" x="{x}" y="{y}"></item>
+    heart_transplant = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="heart_transplant" x="{x}" y="{y}"></item>
+    bomb = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="bomb" x="{x}" y="{y}"></item>
+    bomb_3 = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="bomb_3" x="{x}" y="{y}"></item>
+    war_drum = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="war_drum" x="{x}" y="{y}"></item>
+    blood_drum = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="blood_drum" x="{x}" y="{y}"></item>
+    holy_water = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="holy_water" x="{x}" y="{y}"></item>
+    coupon = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_coupon" x="{x}" y="{y}"></item>
+    full_heart_container = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_heart_container" x="{x}" y="{y}"></item>
+    double_full_heart_container = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_heart_container2" x="{x}" y="{y}"></item>
+    empty_heart_container = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_heart_container_empty" x="{x}" y="{y}"></item>
+    double_empty_heart_container = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_heart_container_empty2" x="{x}" y="{y}"></item>
+    compass = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_compass" x="{x}" y="{y}"></item>
+    map = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_map" x="{x}" y="{y}"></item>
+    key = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_key" x="{x}" y="{y}"></item>
+    potion = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="misc_potion" x="{x}" y="{y}"></item>
+    coins_pile_50 = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="resource_coin50" x="{x}" y="{y}"></item>
+    coins_pile_100 = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="resource_coin100" x="{x}" y="{y}"></item>
+    coins_pile_150 = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="resource_coin150" x="{x}" y="{y}"></item>
+
+    # chests
+    red_chest = <chest color="1" contents="no_item" hidden="0" saleCost="0" singleChoice="0" x="{x}" y="{y}"></chest>
+    black_chest = <chest color="2" contents="no_item" hidden="0" saleCost="0" singleChoice="0" x="{x}" y="{y}"></chest>
+    purple_chest = <chest color="3" contents="no_item" hidden="0" saleCost="0" singleChoice="0" x="{x}" y="{y}"></chest>
 
     # crates
     crate = <crate contents="no_item" type="0" x="{x}" y="{y}"></crate>
     barrel = <crate contents="no_item" type="1" x="{x}" y="{y}"></crate>
+    teh_urn = <crate contents="no_item" type="2" x="{x}" y="{y}"></crate>
+
+    # shrines
+    blood_shrine = <shrine type="0" x="{x}" y="{y}"></shrine>
+    darkness_shrine = <shrine type="1" x="{x}" y="{y}"></shrine>
+    glass_shrine = <shrine type="2" x="{x}" y="{y}"></shrine>
+    peace_shrine = <shrine type="3" x="{x}" y="{y}"></shrine>
+    rhythm_shrine = <shrine type="4" x="{x}" y="{y}"></shrine>
+    risk_shrine = <shrine type="5" x="{x}" y="{y}"></shrine>
+    sacrifice_shrine = <shrine type="6" x="{x}" y="{y}"></shrine>
+    space_shrine = <shrine type="7" x="{x}" y="{y}"></shrine>
+    war_shrine = <shrine type="8" x="{x}" y="{y}"></shrine>
+    no_return_shrine = <shrine type="9" x="{x}" y="{y}"></shrine>
+    phasing_shrine = <shrine type="10" x="{x}" y="{y}"></shrine>
+    pace_shrine = <shrine type="11" x="{x}" y="{y}"></shrine>
+    chance_shrine = <shrine type="12" x="{x}" y="{y}"></shrine>

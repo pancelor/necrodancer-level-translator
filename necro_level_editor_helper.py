@@ -77,6 +77,7 @@ class Dungeon(object):
 
     XML_TYPES = [
         "tiles",
+        "traps",
         "enemies",
         "items",
         "chests",
@@ -99,7 +100,7 @@ class Dungeon(object):
             error("%s is not defined in the [settings] section of this file."%(str(e)))
 
         if self.floor_glyph not in self.config["tiles"]:
-            error("Floor glyph ('%s') is not listed under the [tiles] section"%self.floor_glyph)
+            error("Floor glyph ('%s') must be defined in the [tiles] section."%self.floor_glyph)
 
         if VERBOSE:
             print("Data loaded.")
