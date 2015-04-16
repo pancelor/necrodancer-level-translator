@@ -208,7 +208,7 @@ if __name__ == '__main__':
     parser.add_argument(
         'in_file',
         action='store',
-        help='The formatted .txt file to generate _ensure_all_characters_are_recognized .xml dungeon from'
+        help='The formatted .txt file to generate an .xml dungeon from'
     )
     parser.add_argument(
         '--verbose',
