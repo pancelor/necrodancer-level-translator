@@ -103,9 +103,9 @@ Yes! You can place multiple things *of different types* in one space. For exampl
     [items]
         x = ${database:winged_boots}
 
-### I used this tool and generated an XML dungeon. When I tried to load it in-game, my game crashed/the level didn't load/something went wrong. Help!
+### I used this tool and generated an XML dungeon. When I tried to load it in-game, my game crashed/the level didn't load/something went wrong. What did I do wrong?
 
-That's not technically a question, but I'll humor you. Maybe you misspelled "tile" as "tlie" in one of your XML tags? Please let me know so that I can fix any bugs that exist! You can create an issue here on github, email me (pancelor at gmail dot com), or tweet at me (@pancelor).
+Maybe you misspelled "tile" as "tlie" in one of your XML tags? Please let me know so that I can fix any bugs that exist! You can create an issue here on github, email me (pancelor at gmail dot com), or tweet at me (@pancelor).
 
 ### Why is this so complicated? Why do I have to mess around with XML? Couldn't you have just have hard-coded certain glyphs to mean certain things?
 
