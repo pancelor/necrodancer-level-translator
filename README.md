@@ -24,16 +24,18 @@ I imagine this translator will mostly be used to create the basic structure of l
 
 ## How to use:
 
-You need a dungeon file and one or more level files. (These can all be text files)
+First, you'll need to have [Python3](https://www.python.org/downloads/) installed. *It must be version 3 (e.g. Python 3.4.3), not version 2*.
+
+You dungeon will consist of a dungeon file and one or more level files. (These can all be text files)
 
 The dungeon file is in this format, where each `%(...)` represents a placeholder that you need to fill in:
 
     [settings]
         save_location = % (where on your computer the XML dungeon should be saved)
-        name = % (the dungeon's name
+        name = % (the dungeon's name)
         player_glyph = % (which glyph represents the player)
         floor_glyph = % (which glyph will be used to place a floor tile under any items/enemies/etc that don't have a floor tile specified)
-        character = % (which necrodancer character this dungeon is built for
+        character = % (which necrodancer character this dungeon is built for)
         levels = % (a list of levels in this dungeon)
 
     [tiles]
@@ -68,7 +70,10 @@ Run the example from the commandline as follows:
 
     $ python3 necro_level_editor_helper.py example dungeon.txt
 
-The two arguments to the translator are 1) the directory where your dungeon and level files are saved, and 2) the name of your dungeon file.
+The two arguments to the translator are:
+
+1. the directory where your dungeon and level files are saved
+2. the name of your dungeon file.
 
 ## faq:
 
