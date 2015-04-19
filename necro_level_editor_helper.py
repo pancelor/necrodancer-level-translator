@@ -5,6 +5,7 @@ from pprint import pprint
 import configparser
 import argparse
 import os
+from xml.etree import ElementTree as ET
 
 
 def post(postprocessor):
@@ -29,6 +30,13 @@ def gen_file_lines(fname):
     """ Reads in a file and returns it as a list of lines, with whitespace stripped off the ends of each line"""
     with open(fname, 'r') as file_:
          return [line.strip() for line in file_.readlines()]
+
+def validate_XML(xml_snippet):
+    try:
+        ET.fromstring(xml_snippet)
+        return True
+    except ET.ParseError:
+        return False
 
 def error(msg):
     print('\n'.join(['*'*79, "ERROR: "+msg, '*'*79]))
@@ -137,6 +145,12 @@ class Dungeon(object):
             if sections == set():
                 msg += '\n\t Make sure the input file is located where you think it is!'
             error(msg)
+
+        # ensure all xml tags are closed
+        for section, table in config.items():
+            for key, value in table.items():
+                if value.startswith('<') and not validate_XML(value):
+                    error("Dungeon file contains an invalid XML snippet: '%s=%s'.\n\t(maybe you forgot to close the XML tag?)"%(key, value))
 
         settings = config['settings']
         del config['settings']
