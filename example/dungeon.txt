@@ -98,27 +98,120 @@
     # traps
     spike_trap = <trap subtype="-1" type="2" x="{x}" y="{y}"></trap>
     bomb_trap = <trap subtype="-1" type="9" x="{x}" y="{y}"></trap>
-    right_bounce = <trap subtype="0" type="1" x="{x}" y="{y}"></trap>
-    left_bounce = <trap subtype="1" type="1" x="{x}" y="{y}"></trap>
-    down_bounce = <trap subtype="2" type="1" x="{x}" y="{y}"></trap>
-    up_bounce = <trap subtype="3" type="1" x="{x}" y="{y}"></trap>
+    bounce_R = <trap subtype="0" type="1" x="{x}" y="{y}"></trap>
+    bounce_L = <trap subtype="1" type="1" x="{x}" y="{y}"></trap>
+    bounce_D = <trap subtype="2" type="1" x="{x}" y="{y}"></trap>
+    bounce_U = <trap subtype="3" type="1" x="{x}" y="{y}"></trap>
+    bounce_DR = <trap subtype="4" type="1" x="{x}" y="{y}"></trap>
+    bounce_DL = <trap subtype="5" type="1" x="{x}" y="{y}"></trap>
+    bounce_UL = <trap subtype="6" type="1" x="{x}" y="{y}"></trap>
+    bounce_UR = <trap subtype="7" type="1" x="{x}" y="{y}"></trap>
+
 
     # enemies
-    clone = <enemy beatDelay="1" lord="0" type="112" x="{x}" y="{y}"></enemy>
+    lich_1 = <enemy beatDelay="2" lord="0" type="309" x="{x}" y="{y}"></enemy>
     ghost = <enemy beatDelay="1" lord="0" type="11" x="{x}" y="{y}"></enemy>
-    explosive_mushroom = <enemy beatDelay="1" lord="0" type="118" x="{x}" y="{y}"></enemy>
-    white_skeleton = <enemy beatDelay="1" lord="0" type="3" x="{x}" y="{y}"></enemy>
-    green_skeleton = <enemy beatDelay="1" lord="0" type="4" x="{x}" y="{y}"></enemy>
+    red_dragon = <enemy beatDelay="1" lord="0" type="403" x="{x}" y="{y}"></enemy>
+    grey_direbat = <enemy beatDelay="1" lord="0" type="401" x="{x}" y="{y}"></enemy>
+    yellow_shield_skeleton = <enemy beatDelay="1" lord="0" type="101" x="{x}" y="{y}"></enemy>
+    ice_elemental = <enemy beatDelay="1" lord="0" type="206" x="{x}" y="{y}"></enemy>
+    z3_ghast = <enemy beatDelay="1" lord="0" type="214" x="{x}" y="{y}"></enemy>
+    green_dragon = <enemy beatDelay="1" lord="0" type="402" x="{x}" y="{y}"></enemy>
+    yellow_direbat = <enemy beatDelay="1" lord="0" type="400" x="{x}" y="{y}"></enemy>
+    white_shield_skeleton = <enemy beatDelay="1" lord="0" type="100" x="{x}" y="{y}"></enemy>
+    hellhound = <enemy beatDelay="1" lord="0" type="211" x="{x}" y="{y}"></enemy>
+    gargoyle_necrodancer = <enemy beatDelay="1" lord="0" type="327" x="{x}" y="{y}"></enemy>
+    orange_armadillo = <enemy beatDelay="1" lord="0" type="303" x="{x}" y="{y}"></enemy>
+    harpy = <enemy beatDelay="1" lord="0" type="308" x="{x}" y="{y}"></enemy>
+    gargoyle_crate = <enemy beatDelay="1" lord="0" type="326" x="{x}" y="{y}"></enemy>
+    yellow_armadillo = <enemy beatDelay="1" lord="0" type="111" x="{x}" y="{y}"></enemy>
+    rave_golem = <enemy beatDelay="1" lord="0" type="307" x="{x}" y="{y}"></enemy>
+    ooze_golem = ${rave_golem}
+    gargoyle_awake = <enemy beatDelay="1" lord="0" type="325" x="{x}" y="{y}"></enemy>
+    clone = <enemy beatDelay="1" lord="0" type="112" x="{x}" y="{y}"></enemy>
+    black_bat = <enemy beatDelay="1" lord="0" type="302" x="{x}" y="{y}"></enemy>
+    white_armadillo = <enemy beatDelay="1" lord="0" type="110" x="{x}" y="{y}"></enemy>
+    lich_2 = <enemy beatDelay="2" lord="0" type="310" x="{x}" y="{y}"></enemy>
+    z4_ghast = <enemy beatDelay="1" lord="0" type="306" x="{x}" y="{y}"></enemy>
+    blue_dragon = <enemy beatDelay="1" lord="0" type="404" x="{x}" y="{y}"></enemy>
+    fire_beetle = <enemy beatDelay="1" lord="0" type="209" x="{x}" y="{y}"></enemy>
+    black_shield_skeleton = <enemy beatDelay="1" lord="0" type="102" x="{x}" y="{y}"></enemy>
+    lich_3 = <enemy beatDelay="2" lord="0" type="311" x="{x}" y="{y}"></enemy>
+    purple_goblin = <enemy beatDelay="1" lord="0" type="207" x="{x}" y="{y}"></enemy>
+    wall_mimic = <enemy beatDelay="1" lord="0" type="116" x="{x}" y="{y}"></enemy>
+    ice_beetle = <enemy beatDelay="1" lord="0" type="210" x="{x}" y="{y}"></enemy>
+    blue_banshee = <enemy beatDelay="1" lord="0" type="405" x="{x}" y="{y}"></enemy>
+    orange_minotaur = <enemy beatDelay="1" lord="0" type="407" x="{x}" y="{y}"></enemy>
+    grey_goblin = <enemy beatDelay="1" lord="0" type="208" x="{x}" y="{y}"></enemy>
+    fire_elemental = <enemy beatDelay="1" lord="0" type="205" x="{x}" y="{y}"></enemy>
+    black_blademaster = <enemy beatDelay="1" lord="0" type="304" x="{x}" y="{y}"></enemy>
+    green_banshee = <enemy beatDelay="1" lord="0" type="406" x="{x}" y="{y}"></enemy>
+    blue_minotaur = <enemy beatDelay="1" lord="0" type="408" x="{x}" y="{y}"></enemy>
+    goblin_bomber = <enemy beatDelay="2" lord="0" type="300" x="{x}" y="{y}"></enemy>
+    gargoyle_wind = <enemy beatDelay="1" lord="0" type="322" x="{x}" y="{y}"></enemy>
+    yellow_blademaster = <enemy beatDelay="1" lord="0" type="305" x="{x}" y="{y}"></enemy>
+    blue_bat = <enemy beatDelay="1" lord="0" type="6" x="{x}" y="{y}"></enemy>
+    mole = <enemy beatDelay="1" lord="0" type="114" x="{x}" y="{y}"></enemy>
+    light_golem = <enemy beatDelay="1" lord="0" type="108" x="{x}" y="{y}"></enemy>
+    gargoyle_chase = <enemy beatDelay="1" lord="0" type="323" x="{x}" y="{y}"></enemy>
+    fire_cauldron = <enemy beatDelay="1" lord="0" type="217" x="{x}" y="{y}"></enemy>
+    red_bat = <enemy beatDelay="1" lord="0" type="7" x="{x}" y="{y}"></enemy>
+    blue_monkey = <enemy beatDelay="1" lord="0" type="9" x="{x}" y="{y}"></enemy>
+    heavy_golem = <enemy beatDelay="1" lord="0" type="109" x="{x}" y="{y}"></enemy>
+    gargoyle_asleep = <enemy beatDelay="1" lord="0" type="324" x="{x}" y="{y}"></enemy>
+    ice_cauldron = <enemy beatDelay="1" lord="0" type="218" x="{x}" y="{y}"></enemy>
+    green_bat = <enemy beatDelay="1" lord="0" type="8" x="{x}" y="{y}"></enemy>
+    baby_mummy = <enemy beatDelay="1" lord="0" type="321" x="{x}" y="{y}"></enemy>
+    green_sarcophagus = <enemy beatDelay="1" lord="0" type="316" x="{x}" y="{y}"></enemy>
     black_skeleton = <enemy beatDelay="1" lord="0" type="5" x="{x}" y="{y}"></enemy>
-    white_skelemage = <enemy beatDelay="2" lord="0" type="103" x="{x}" y="{y}"></enemy>
-    green_skelemage = <enemy beatDelay="2" lord="0" type="104" x="{x}" y="{y}"></enemy>
-    black_skelemage = <enemy beatDelay="2" lord="0" type="105" x="{x}" y="{y}"></enemy>
-    green_slime = <enemy beatDelay="1" lord="0" type="0" x="{x}" y="{y}"></enemy>
-    blue_slime = <enemy beatDelay="1" lord="0" type="1" x="{x}" y="{y}"></enemy>
-    yellow_slime = <enemy beatDelay="1" lord="0" type="2" x="{x}" y="{y}"></enemy>
     ice_slime = <enemy beatDelay="1" lord="0" type="201" x="{x}" y="{y}"></enemy>
+    z1_ghast = <enemy beatDelay="1" lord="0" type="13" x="{x}" y="{y}"></enemy>
+    mommy = <enemy beatDelay="1" lord="0" type="411" x="{x}" y="{y}"></enemy>
+    white_sarcophagus = <enemy beatDelay="1" lord="0" type="315" x="{x}" y="{y}"></enemy>
+    green_skeleton = <enemy beatDelay="1" lord="0" type="4" x="{x}" y="{y}"></enemy>
+    yellow_slime = <enemy beatDelay="1" lord="0" type="2" x="{x}" y="{y}"></enemy>
+    z2_ghast = <enemy beatDelay="1" lord="0" type="115" x="{x}" y="{y}"></enemy>
+    pink_monkey = <enemy beatDelay="1" lord="0" type="313" x="{x}" y="{y}"></enemy>
+    pixie = <enemy beatDelay="1" lord="0" type="314" x="{x}" y="{y}"></enemy>
+    white_skeleton = <enemy beatDelay="1" lord="0" type="3" x="{x}" y="{y}"></enemy>
+    blue_slime = <enemy beatDelay="1" lord="0" type="1" x="{x}" y="{y}"></enemy>
+    green_warlock = <enemy beatDelay="1" lord="0" type="320" x="{x}" y="{y}"></enemy>
+    green_monkey = <enemy beatDelay="1" lord="0" type="312" x="{x}" y="{y}"></enemy>
+    ogre = <enemy beatDelay="1" lord="0" type="412" x="{x}" y="{y}"></enemy>
+    grey_shovemonster = <enemy beatDelay="1" lord="0" type="219" x="{x}" y="{y}"></enemy>
+    green_slime = <enemy beatDelay="1" lord="0" type="0" x="{x}" y="{y}"></enemy>
+    blue_warlock = <enemy beatDelay="1" lord="0" type="319" x="{x}" y="{y}"></enemy>
+    white_monkey = <enemy beatDelay="1" lord="0" type="10" x="{x}" y="{y}"></enemy>
+    blood_nightmare = <enemy beatDelay="1" lord="0" type="410" x="{x}" y="{y}"></enemy>
+    purple_shovemonster = <enemy beatDelay="1" lord="0" type="212" x="{x}" y="{y}"></enemy>
+    sleeper_goblin = <enemy beatDelay="1" lord="0" type="301" x="{x}" y="{y}"></enemy>
+    ice_mimic_cauldron = <enemy beatDelay="1" lord="0" type="216" x="{x}" y="{y}"></enemy>
+    black_sarcophagus = <enemy beatDelay="1" lord="0" type="317" x="{x}" y="{y}"></enemy>
+    white_skeleknight = <enemy beatDelay="1" lord="0" type="202" x="{x}" y="{y}"></enemy>
     fire_slime = <enemy beatDelay="1" lord="0" type="200" x="{x}" y="{y}"></enemy>
+    klappa = <enemy beatDelay="1" lord="0" type="213" x="{x}" y="{y}"></enemy>
+    yeti = ${klappa}
+    blue_mushroom = <enemy beatDelay="1" lord="0" type="106" x="{x}" y="{y}"></enemy>
+    shopkeeper = <enemy beatDelay="1" lord="0" type="600" x="{x}" y="{y}"></enemy>
+    green_skeleknight = <enemy beatDelay="1" lord="0" type="203" x="{x}" y="{y}"></enemy>
+    spider = <enemy beatDelay="2" lord="0" type="318" x="{x}" y="{y}"></enemy>
     zombie = <enemy beatDelay="1" lord="0" type="12" x="{x}" y="{y}"></enemy>
+    purple_mushroom = <enemy beatDelay="1" lord="0" type="107" x="{x}" y="{y}"></enemy>
+    blood_shopkeeper = <enemy beatDelay="1" lord="0" type="601" x="{x}" y="{y}"></enemy>
+    black_skeleknight = <enemy beatDelay="1" lord="0" type="204" x="{x}" y="{y}"></enemy>
+    tar_monster = <enemy beatDelay="1" lord="0" type="113" x="{x}" y="{y}"></enemy>
+    light_mushroom = <enemy beatDelay="1" lord="0" type="117" x="{x}" y="{y}"></enemy>
+    glass_shopkeeper = <enemy beatDelay="1" lord="0" type="602" x="{x}" y="{y}"></enemy>
+    blue_wizard = <enemy beatDelay="2" lord="0" type="103" x="{x}" y="{y}"></enemy>
+    red_mimic_chest = <enemy beatDelay="1" lord="0" type="14" x="{x}" y="{y}"></enemy>
+    explosive_mushroom = <enemy beatDelay="1" lord="0" type="118" x="{x}" y="{y}"></enemy>
+    food_shopkeeper = <enemy beatDelay="1" lord="0" type="603" x="{x}" y="{y}"></enemy>
+    yellow_wizard = <enemy beatDelay="2" lord="0" type="104" x="{x}" y="{y}"></enemy>
+    blue_mimic_chest = <enemy beatDelay="1" lord="0" type="14" x="{x}" y="{y}"></enemy>
+    dark_nightmare = <enemy beatDelay="1" lord="0" type="409" x="{x}" y="{y}"></enemy>
+    black_wizard = <enemy beatDelay="2" lord="0" type="105" x="{x}" y="{y}"></enemy>
+    fire_cauldron_mimic = <enemy beatDelay="1" lord="0" type="215" x="{x}" y="{y}"></enemy>
+
 
     # weapons
     base_dagger = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="weapon_dagger" x="{x}" y="{y}"></item>
@@ -178,6 +271,9 @@
     base_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_1" x="{x}" y="{y}"></item>
     bright_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_2" x="{x}" y="{y}"></item>
     luminous_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_3" x="{x}" y="{y}"></item>
+    torch_1 = ${base_torch}
+    torch_2 = ${bright_torch}
+    torch_3 = ${luminous_torch}
     obsidian_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_obsidian" x="{x}" y="{y}"></item>
     glass_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_glass" x="{x}" y="{y}"></item>
     infernal_torch = <item bloodCost="0.0" saleCost="0" singleChoice="0" type="torch_infernal" x="{x}" y="{y}"></item>
