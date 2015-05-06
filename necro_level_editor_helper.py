@@ -129,10 +129,17 @@ class Dungeon(object):
         parser = configparser.ConfigParser(interpolation=configparser.ExtendedInterpolation())
         parser.optionxform = str # Preserve case
         parser.read(fname)
-        config = {
-            section: {key: val for key, val in parser.items(section)}
-            for section in parser.sections()
-        }
+
+        try:
+            config = {
+                section: {key: val for key, val in parser.items(section)}
+                for section in parser.sections()
+            }
+        except configparser.InterpolationMissingOptionError as e:
+            msg = str(e)
+            if "database." in msg:
+                msg += "\n\tDid you write 'database.x' instead of 'database:x'?"
+            error(msg)
 
         # make sure the sections are exactly what we're expecting
         expected_sections = set(['settings', 'database']+Dungeon.XML_TYPES)
